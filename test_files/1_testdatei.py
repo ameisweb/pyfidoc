@@ -1,4 +1,4 @@
-# @Kapitel: PyFiDoc Ver. 1.0 - Python Files to Dokumentation
+# @Kapitel: PyFiDoc Ver. 1.0 - Python Files to Dokumentation ssssss
 # @Author: A_#_M
 # @Copyright: CC BY-NC-SA
 # @Comment: Online gibt es weiterführende Informationen zu dem Thema Lizenz:
