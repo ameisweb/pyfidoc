@@ -7,6 +7,9 @@
 </div>
 <div class="div_copyright">© CC BY-NC-SA
 </div>
+<div class="div_comment"><p>Das Programm kann auch bei Github downgeloadet werden: 
+</p></div>
+<div class="div_doku"><a href=https://github.com/ameisweb/pyfidoc target="_blank">https://github.com/ameisweb/pyfidoc</a></div>
 <div class="div_comment"><p>Online gibt es weiterführende Informationen zu dem Thema Lizenz: 
 </p></div>
 <div class="div_doku"><a href=https://de.creativecommons.net/was-ist-cc/ target="_blank">https://de.creativecommons.net/was-ist-cc/</a></div>
@@ -129,6 +132,9 @@
 </div>
 <div class="div_copyright">© CC BY-NC-SA
 </div>
+<div class="div_comment"><p>Das Programm kann auch bei Github downgeloadet werden: 
+</p></div>
+<div class="div_doku"><a href=https://github.com/ameisweb/pyfidoc target="_blank">https://github.com/ameisweb/pyfidoc</a></div>
 <div class="div_comment"><p>Online gibt es weiterführende Informationen zu dem Thema Lizenz: 
 </p></div>
 <div class="div_doku"><a href=https://de.creativecommons.net/was-ist-cc/ target="_blank">https://de.creativecommons.net/was-ist-cc/</a></div>
@@ -251,6 +257,9 @@
 </div>
 <div class="div_copyright">© CC BY-NC-SA
 </div>
+<div class="div_comment"><p>Das Programm kann auch bei Github downgeloadet werden: 
+</p></div>
+<div class="div_doku"><a href=https://github.com/ameisweb/pyfidoc target="_blank">https://github.com/ameisweb/pyfidoc</a></div>
 <div class="div_comment"><p>Online gibt es weiterführende Informationen zu dem Thema Lizenz: 
 </p></div>
 <div class="div_doku"><a href=https://de.creativecommons.net/was-ist-cc/ target="_blank">https://de.creativecommons.net/was-ist-cc/</a></div>

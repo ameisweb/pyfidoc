@@ -1,6 +1,8 @@
-# @Kapitel: PyFiDoc Ver. 1.0 - Python Files to Dokumentation ssssss
+# @Kapitel: PyFiDoc Ver. 1.0 - Python Files to Dokumentation
 # @Author: A_#_M
 # @Copyright: CC BY-NC-SA
+# @Comment: Das Programm kann auch bei Github downgeloadet werden:
+# @Doku-HTML: https://github.com/ameisweb/pyfidoc
 # @Comment: Online gibt es weiterführende Informationen zu dem Thema Lizenz:
 # @Doku-HTML: https://de.creativecommons.net/was-ist-cc/
 
