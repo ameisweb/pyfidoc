@@ -1,3 +1,4 @@
+#
 # PyFiDoc Version 1.0
 #
 1.1 Mögliche Syntax in Code-Dateien
