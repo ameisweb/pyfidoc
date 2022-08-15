@@ -16,13 +16,41 @@ def files_read(path):
             list_files.append(file)
     return list_files
 
-def files_write_navi(file_list):
+def files_write_navi(file_list, path_source):
     for file in file_list:
+        # Schreibt oben Links Filenamen ins Menu:
+        no_extension = file.split(".")
+        # print(no_extension[0])
         with open("./workfile/nav_fragment.txt", "a", encoding="utf-8") as nav_file:
-            nav_file.write('<li><a href="' + file + '.txt' + '"' + " " + 'target="_blank"' + '>'
-                           + file + '.txt' + '</a></li>' + "\n")
+            nav_file.write('<li><a href="' + 'py_texte/' + no_extension[0] + '.html' + '"' + " " +
+                           'target="_blank"' + '>' + file + '</a></li>' + "\n")
+    write_iframe(file_list, path_source)
     with open("./workfile/nav_fragment.txt", "a", encoding="utf-8") as nav_file:
         nav_file.write('<li><a class="active" href="#home">::Dokument_Index::</a></li>' + "\n")
+
+def write_iframe(file_list, path_source):
+    for file in file_list:
+        no_anhang = file.split(".")
+        link = path_source + "pyfidocs/html/py_texte/" + no_anhang[0] + ".html"
+        # Schreibt Link Inhalt in text_iframe.txt Datei:
+        with open("./workfile/text_iframe.txt", "a", encoding="utf-8") as iframe_file:
+            iframe_file.write(' src = "' + file + '.txt' + '" >' + '</div> </body> </html>')
+
+        # Schreibt readlines in Ziel-iFrame-HTML-Datei:
+        with open("./workfile/text_iframe.txt", "r", encoding="utf-8") as frame_write:
+            for line in frame_write.readlines():
+                with open(link, "a", encoding="utf-8") as index_write:
+                    index_write.write(line)
+
+        # löscht Datei ./workfile/text_iframe.txt
+        if os.path.exists("./workfile/text_iframe.txt"):
+            os.remove("./workfile/text_iframe.txt")
+        else:
+            print("File ./workfile/text_iframe.txt does not exist")
+        # Kopiert dann wieder das Original-File text_iframe.txt in workfile-Verzeichnis:
+        y_orig = "./workfile/originals/text_iframe.txt"
+        y_copy = "./workfile/text_iframe.txt"
+        shutil.copy(y_orig, y_copy)
 
 
 # @Thema: Die Sourcefiles einlesen und in Dictionary schreiben
@@ -279,7 +307,7 @@ def writing_docu(dict_print, ziel1, html_write, txt_docu=True,
                         writer.write(value)
     if html_docu:
         write_html(html_write)
-    vorlagen_restaurieren()
+    # vorlagen_restaurieren()
 
 # @Thema: Replacer für nicht benötigte Strings
 def replacer(value):
@@ -304,18 +332,22 @@ def replacer(value):
 def write_html(path):
     if file_exists(path):
         os.remove(path)
+    # Schreibt zuerst alles aus header_fragment.txt in index.html:
     with open("./workfile/header_fragment.txt", "r", encoding="utf-8") as header_write:
         for head in header_write.readlines():
             with open(path, "a", encoding="utf-8") as index_write:
                 index_write.write(head)
+    # Schreibt dann alles aus nav_fragment.txt in index.html:
     with open("./workfile/nav_fragment.txt", "r", encoding="utf-8") as nav_write:
         for nav in nav_write.readlines():
             with open(path, "a", encoding="utf-8") as index_write:
                 index_write.write(nav)
+    # Schreibt dann alles aus body_fragment.txt in index.html:
     with open("./workfile/body_fragment.txt", "r", encoding="utf-8") as body_write:
         for body in body_write.readlines():
             with open(path, "a", encoding="utf-8") as index_write:
                 index_write.write(body)
+    # Schreibt zum Schluss alles aus end_fragment.txt in index.html:
     with open("./workfile/end_fragment.txt", "r", encoding="utf-8") as end_write:
         for end in end_write.readlines():
             with open(path, "a", encoding="utf-8") as index_write:
@@ -324,12 +356,13 @@ def write_html(path):
 def copy_in_txt(path):
     list_copy_txt = []
     path_2 = path
+    path_3 = path + "pyfidocs/html/py_texte/"
     for file in os.listdir(path_2):
         if fnmatch.fnmatch(file, '*.py'):
             list_copy_txt.append(file)
     for list in list_copy_txt:
         x_orig= list
-        shutil.copy(path_2 + x_orig, path_2 + x_orig + ".txt")
+        shutil.copy(path_2 + x_orig, path_3 + x_orig + ".txt")
 
 
 def vorlagen_restaurieren():
@@ -357,7 +390,9 @@ def vorlagen_restaurieren():
 
 
 def delete_make_dir(path_source):
-    dir_path = path_source + "documentations/"
+    dir_path = path_source + "pyfidocs/"
+    html_path = path_source + "pyfidocs/html"
+    html_path_2 = path_source + "pyfidocs/html/py_texte/"
     try:
         shutil.rmtree(dir_path)
     except OSError as e:
@@ -368,6 +403,16 @@ def delete_make_dir(path_source):
             os.mkdir(dir_path)
         if os.path.exists(dir_path):
             break
+    while True:
+        if not os.path.exists(dir_path):
+            os.mkdir(dir_path)
+        if os.path.exists(dir_path):
+            break
+    if not os.path.exists(html_path):
+        os.mkdir(html_path)
+    if not os.path.exists(html_path_2):
+        os.mkdir(html_path_2)
+
 
 
 

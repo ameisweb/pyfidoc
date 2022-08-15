@@ -2,3 +2,369 @@
 <p>&nbsp;&nbsp;&nbsp;</p>
 </ul>
 <<div style="margin-left:20%;padding:1px 25px;height:1000px;">
+<div class="div_kapitel" id="1. #"><H1>1. PyFiDoc Ver. 1.0 - Python Files to Dokumentation</H1></div>
+<div class="div_author">Author: A_#_M
+</div>
+<div class="div_copyright">© CC BY-NC-SA
+</div>
+<div class="div_comment"><p>Online gibt es weiterführende Informationen zu dem Thema Lizenz: 
+</p></div>
+<div class="div_doku"><a href=https://de.creativecommons.net/was-ist-cc/ target="_blank">https://de.creativecommons.net/was-ist-cc/</a></div>
+<div class="div_unterkapitel" id="1.1 #"><H2>1.1  Mögliche Syntax in Code-Dateien</H2></div>
+<div class="div_thema" id="1.1.1 #"><H3>1.1.1 Grundlagen Syntax</H3></div>
+<div class="div_comment"><p>Die wichtigste Basis-Syntax: Jede nicht-Code-Zeile muss mit einem # beginnen. Danach dann ein Leerzeichen und: "@Name: " (Leerzeichen nach : ist erforderlich). Folgende Möglichkeiten gibt es: "@Kapitel: ", "@Unterkapitel: ", "@Thema: ", "@Author: ", "@Copyright: ", "@Doku-HTML: ", und natürlich "@Comment: ". Die eigentlichen Codezeilen haben keine Kennung am Anfang einer Zeile, d.h. jede Zeile im Code ohne die obigen Kennungen werden als Code-Zeile interpretiert. Die Namen stehen für genau das: Kapitel für Kapitel, Unterkapitel für Unterkapitel etc. Alle "@Doku-HTML: " erwarten http(s)-Links und werden entsprechend gelinkt im Dokument. 
+</p></div>
+<div class="div_thema" id="1.1.2 #"><H3>1.1.2 Einstellmöglichkeiten</H3></div>
+<div class="div_comment"><p>Mit den folgenden Variablen kann die Dokumentationserstellung gesteuert werden: 
+</p></div>
+<div class="div_code">	path_source&nbsp;=&nbsp;"../test_files/"
+</div><div class="div_code">	source_liste&nbsp;=&nbsp;[]
+</div><div class="div_code">	name_doku_file&nbsp;=&nbsp;path_source&nbsp;+&nbsp;"test_doku.txt"
+</div><div class="div_code">	name_html_file&nbsp;=&nbsp;path_source&nbsp;+&nbsp;"index.html"
+</div><div class="div_comment"><p>"path_source": Hier den Pfad zu der/den Sourcedatei(en) eingeben. Das Programm kann alle Python Dateien (mit Endung .py) im Pfad erkennen und erstellt dafür direkt eine Text-Dokumentation und auch eine HTML-Dokumentation. Beide Dateien werden im identischen Verzeichnis erstellt. Möchte man aber nur für bestimmte Dateien Dokumentationen erstellen, dann sollte man in "souce_liste" die Dateinamen eintragen. Beispiel: 
+</p></div>
+<div class="div_code">	source_liste&nbsp;=&nbsp;["1_testdatei.py",&nbsp;"3_testdatei.py"]
+</div><div class="div_comment"><p>Mit den beiden Variablen "name_doku_file" und "name_html_file" können die Dokumentationsdateien benannt werden. Die HTML-Datei sollte man nur dann ändern, wenn man z.B. größere Webdokumenationen vor hat, ansonsten ist "index.html" eine gute Wahl. Beispiel: 
+</p></div>
+<div class="div_code">	name_doku_file&nbsp;=&nbsp;path_source&nbsp;+&nbsp;"Dokumenations_1.txt"
+</div><div class="div_code">	name_html_file&nbsp;=&nbsp;path_source&nbsp;+&nbsp;"index.html"
+</div><div class="div_comment"><p>Das war es eigentlich schon..:-) 
+</p></div>
+<div class="div_thema" id="1.1.3 #"><H3>1.1.3 Die main.py Datei</H3></div>
+<div class="div_comment"><p>In der Datei "main.py" können im unteren Bereich in der Funktion "def main():" weitere Dinge eingestellt werden: 
+</p></div>
+<div class="div_code">	def&nbsp;main():
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;vorlagen_restaurieren()
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;len(source_liste)&nbsp;==&nbsp;0:
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list_files&nbsp;=&nbsp;files_read(path_source)
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;files_write_navi(list_files)
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;else:
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list_files&nbsp;=&nbsp;source_liste
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;files_write_navi(list_files)
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;dicttionary&nbsp;=&nbsp;source_read(path_source,&nbsp;list_files)
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;writing_docu(dicttionary,&nbsp;name_doku_file,&nbsp;name_html_file)
+</div><div class="div_comment"><p>In der Funktion "writing_docu()" können folgende Argumente eingestellt werden, die möglichen Werte sind jeweils "True" oder "False": 
+</p></div>
+<div class="div_code">	txt_docu=True&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Das&nbsp;ist&nbsp;auch&nbsp;der&nbsp;Standardwert
+</div><div class="div_code">	html_docu=True&nbsp;&nbsp;&nbsp;#&nbsp;Das&nbsp;ist&nbsp;auch&nbsp;der&nbsp;Standardwert
+</div><div class="div_code">	docx_docu=False&nbsp;&nbsp;#&nbsp;Noch&nbsp;nicht&nbsp;umgesetzt!
+</div><div class="div_code">	pdf_docu=False&nbsp;&nbsp;&nbsp;#&nbsp;Noch&nbsp;nicht&nbsp;umgesetzt!
+</div><div class="div_comment"><p>Eine Einstellung wäre z.B., wenn man zwar HTML aber keine TXT-Dokumentation haben möchte: 
+</p></div>
+<div class="div_code">	writing_docu(dicttionary,&nbsp;name_doku_file,&nbsp;name_html_file,&nbsp;txt_docu=False)
+</div><div class="div_comment"><p>Wenn man keine HTML-Dokumentation haben möchte. aber eine TXT-Dokumentation: 
+</p></div>
+<div class="div_code">	writing_docu(dicttionary,&nbsp;name_doku_file,&nbsp;name_html_file,&nbsp;html_docu=False)
+</div><div class="div_thema" id="1.1.4 #"><H3>1.1.4 Imports</H3></div>
+<div class="div_comment"><p>Es gibt folgende Imports in der "functions.py"-Datei: 
+</p></div>
+<div class="div_code">	import&nbsp;fnmatch
+</div><div class="div_code">	import&nbsp;os,&nbsp;shutil
+</div><div class="div_code">	import&nbsp;re
+</div><div class="div_code">	from&nbsp;os.path&nbsp;import&nbsp;exists&nbsp;as&nbsp;file_exists
+</div><div class="div_thema" id="1.1.5 #"><H3>1.1.5 Reihenfolge der Dateien</H3></div>
+<div class="div_comment"><p>Die Reihenfolge der Dateien spielt natürlich eine Rolle für Dokumentationen. Man möchte bei vielen einzelnen Python-Dateien in einem Verzeichnis die wichtigste Datei sicherlich am Anfang stehen haben etc. Hierfür gibt es keine "Patentlösung", da die Dateinamen im Normalfall ja nicht aufsteigend nach A-Z benannt werden. Es gibt zwei Möglichkeiten, um die Reihenfolge zu steuern. Die erste einfache Variante ist: Die Dateinamen vornummerieren, z.B. wie auch die Testdaten hier im Verzeichnis "testdateien" --> "1_testdatei.py, 2_testdatei.py, 3_testdatei.py". Man könnte z.B. alle Dateien in ein eigenes Verzeichnis legen und durchnummerieren. Die zweite Variante ist die Steuerung über die Variable "source_liste". Dazu wurde am Anfang schon mehr geschrieben. 
+</p></div>
+<div class="div_unterkapitel" id="1.2 #"><H2>1.2  Source(n) einlesen</H2></div>
+<div class="div_thema" id="1.2.1 #"><H3>1.2.1 HTML-Datei(en)</H3></div>
+<div class="div_comment"><p>In der HTML-Datei wird die Nummerierung umgesetzt, wie das in der "functions.py" Datei umgesetzt wurde. Beispiel für Unterkapitel. Hier werden die Zähler bei jedem Vorkommen um eins hochgezählt: 
+</p></div>
+<div class="div_code">	if&nbsp;count_old_unt_kapitel&nbsp;!=&nbsp;count_kapitel:
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;count_unterkapitel&nbsp;=&nbsp;0
+</div><div class="div_code">	count_unterkapitel&nbsp;+=&nbsp;1
+</div><div class="div_comment"><p>Die Nummersetzung erfolgt dann hier: 
+</p></div>
+<div class="div_code">	dict_print["xxx"&nbsp;+&nbsp;"_"&nbsp;+&nbsp;str(count_zeile)]&nbsp;=&nbsp;[str(count_kapitel)&nbsp;+&nbsp;"."
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;str(count_unterkapitel)&nbsp;+&nbsp;"&nbsp;"&nbsp;+&nbsp;line]
+</div><div class="div_comment"><p>Der Zähler ist nur für die Kapitel, Unterkapitel und fürs Thema vorgesehen. Natürlich muss bei jedem neuen Kapitel der Unterkapitelzähler wieder bei 1 beginnen, ebenso bei jedem neuen Unterkapitel muss der Thema-Zähler auch wieder bei 1 starten. Die Source-Datei(en) werden in Funktion "source_read()" eingelesen. Für jede gefundene Source-Datei wird einmal der komplette Inhalt in ein Dictionary eingelesen.: 
+</p></div>
+<div class="div_code">	for&nbsp;onefile&nbsp;in&nbsp;list_files:
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Pro&nbsp;Datei&nbsp;komplettes&nbsp;auslesen&nbsp;und&nbsp;schreiben&nbsp;der&nbsp;Zeilen&nbsp;ins&nbsp;Dictionary:
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;open(path&nbsp;+&nbsp;onefile,&nbsp;"r",&nbsp;encoding="utf-8")&nbsp;as&nbsp;file:
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;line&nbsp;in&nbsp;file.readlines():
+</div><div class="div_comment"><p>Z.B. der Bereich für die Unterkapitel. Hier wird pro Source-Zeile erkannt, ob am Anfang der Bereich für Unterkapitel zu finden ist, wenn ja, wird die Nummerierung angeworfen und dann in "dict_print" in Dictionary geschrieben: 
+</p></div>
+<div class="div_code">	elif&nbsp;line.startswith("xxx"):
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;count_old_unt_kapitel&nbsp;!=&nbsp;count_kapitel:
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count_unterkapitel&nbsp;=&nbsp;0
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;count_unterkapitel&nbsp;+=&nbsp;1
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;dict_print["xxx"&nbsp;+&nbsp;"_"&nbsp;+&nbsp;str(count_zeile)]&nbsp;=&nbsp;[str(count_kapitel)&nbsp;+&nbsp;"."
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;str(count_unterkapitel)&nbsp;+&nbsp;"&nbsp;"&nbsp;+&nbsp;line]
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;count_old_unt_kapitel&nbsp;=&nbsp;count_kapitel
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;count_zeile&nbsp;+=&nbsp;1
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;count_comment&nbsp;+=&nbsp;1
+</div><div class="div_unterkapitel" id="1.3 #"><H2>1.3  Dokumente erzeugen</H2></div>
+<div class="div_thema" id="1.3.1 #"><H3>1.3.1 Funktion writing_docu() - HTML</H3></div>
+<div class="div_comment"><p>In der Funktion "writing_docu()" werden die eigentlich Dokumentationen geschrieben, nachdem alle Source-Dateien eingelesen und in das Dictionary geschrieben wurden. Beispiel Unterkapitel: 
+</p></div>
+<div class="div_code">	elif&nbsp;re.search("^[0-9].*#&nbsp;@Unterkapitel.*",&nbsp;value):
+</div><div class="div_code">	k&nbsp;=&nbsp;re.search("(.*)#&nbsp;@Unterkapitel.*:&nbsp;(.*)",&nbsp;value)
+</div><div class="div_code">	if&nbsp;html_docu:
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;open("./tmp_dateien/body_fragment.txt",&nbsp;"a",&nbsp;encoding="utf-8")&nbsp;as&nbsp;writer:
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writer.write('&lt;div&nbsp;class="div_unterkapitel"'&nbsp;+&nbsp;"&nbsp;"&nbsp;+&nbsp;'id="'&nbsp;+&nbsp;k.group(1)&nbsp;+&nbsp;'#"'&nbsp;+&nbsp;'&gt;'
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;'&lt;H2&gt;'&nbsp;+&nbsp;k.group(1)&nbsp;+&nbsp;"&nbsp;"&nbsp;+&nbsp;k.group(2)&nbsp;+
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&lt;/H2&gt;'&nbsp;+&nbsp;'&lt;/div&gt;'&nbsp;+&nbsp;"\n")
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;open("./tmp_dateien/nav_fragment.txt",&nbsp;"a",&nbsp;encoding="utf-8")&nbsp;as&nbsp;nav_file:
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nav_file.write('&lt;li&gt;&lt;a&nbsp;href='&nbsp;+&nbsp;'"#'&nbsp;+&nbsp;k.group(1)&nbsp;+&nbsp;'#'&nbsp;+&nbsp;'"&gt;'&nbsp;+
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k.group(1)&nbsp;+&nbsp;k.group(2)&nbsp;+&nbsp;'&lt;/a&gt;&lt;/li&gt;')
+</div><div class="div_comment"><p>Das sieht zuerst "wüst" aus, ist es auch vermutlich ..:-), aber so kann ich schlicht den Code besser lesen. Den "with open()" Bereich werde ich später vermutlich zu einer Funktion umbauen. Aber erst irgendwann viel später. Das erste "with open()" beschreibt die tmp-Datei "body_fragment.txt" mit den nötigen HTML-Codes. Die "body_fragment.txt"-Datei später für die eigentliche Erstellung der "index.html" Datei benötigt. Das zweite "with open()" beschreibt den linken Navi-Bereich. 
+</p></div>
+<div class="div_thema" id="1.3.2 #"><H3>1.3.2 Funktion writing_docu() - TXT Datei</H3></div>
+<div class="div_comment"><p>Die TXT-Datei wird komplett in diesem Bereich geschrieben: 
+</p></div>
+<div class="div_code">	if&nbsp;txt_docu:
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;open(ziel1,&nbsp;"a",&nbsp;encoding="utf-8")&nbsp;as&nbsp;writer:
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value&nbsp;=&nbsp;replacer(value)
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writer.write(value)
+</div><div class="div_thema" id="1.3.3 #"><H3>1.3.3 Mehrfache Ausführungen möglich</H3></div>
+<div class="div_comment"><p>Die erstellten Dateien (index.html, test_doku.txt) werden bei jedem Start des Programms vorab immer gelöscht. Man kann das Programm also beliebig oft ausführen. 
+</p></div>
+<div class="div_unterkapitel" id="1.4 #"><H2>1.4  Abschluss</H2></div>
+<div class="div_thema" id="1.4.1 #"><H3>1.4.1 Zusammenfassung</H3></div>
+<div class="div_comment"><p>Weitere Hinweise zu den benötigten Versionen: Programmiert mit Python: 3.9.x 
+</p></div>
+<p></p><p></p><p></p>
+<div class="div_kapitel" id="2. #"><H1>2. PyFiDoc Ver. 1.0 - Python Files to Dokumentation</H1></div>
+<div class="div_author">Author: A_#_M
+</div>
+<div class="div_copyright">© CC BY-NC-SA
+</div>
+<div class="div_comment"><p>Online gibt es weiterführende Informationen zu dem Thema Lizenz: 
+</p></div>
+<div class="div_doku"><a href=https://de.creativecommons.net/was-ist-cc/ target="_blank">https://de.creativecommons.net/was-ist-cc/</a></div>
+<div class="div_unterkapitel" id="2.1 #"><H2>2.1  Mögliche Syntax in Code-Dateien</H2></div>
+<div class="div_thema" id="2.1.1 #"><H3>2.1.1 Grundlagen Syntax</H3></div>
+<div class="div_comment"><p>Die wichtigste Basis-Syntax: Jede nicht-Code-Zeile muss mit einem # beginnen. Danach dann ein Leerzeichen und: "@Name: " (Leerzeichen nach : ist erforderlich). Folgende Möglichkeiten gibt es: "@Kapitel: ", "@Unterkapitel: ", "@Thema: ", "@Author: ", "@Copyright: ", "@Doku-HTML: ", und natürlich "@Comment: ". Die eigentlichen Codezeilen haben keine Kennung am Anfang einer Zeile, d.h. jede Zeile im Code ohne die obigen Kennungen werden als Code-Zeile interpretiert. Die Namen stehen für genau das: Kapitel für Kapitel, Unterkapitel für Unterkapitel etc. Alle "@Doku-HTML: " erwarten http(s)-Links und werden entsprechend gelinkt im Dokument. 
+</p></div>
+<div class="div_thema" id="2.1.2 #"><H3>2.1.2 Einstellmöglichkeiten</H3></div>
+<div class="div_comment"><p>Mit den folgenden Variablen kann die Dokumentationserstellung gesteuert werden: 
+</p></div>
+<div class="div_code">	path_source&nbsp;=&nbsp;"../test_files/"
+</div><div class="div_code">	source_liste&nbsp;=&nbsp;[]
+</div><div class="div_code">	name_doku_file&nbsp;=&nbsp;path_source&nbsp;+&nbsp;"test_doku.txt"
+</div><div class="div_code">	name_html_file&nbsp;=&nbsp;path_source&nbsp;+&nbsp;"index.html"
+</div><div class="div_comment"><p>"path_source": Hier den Pfad zu der/den Sourcedatei(en) eingeben. Das Programm kann alle Python Dateien (mit Endung .py) im Pfad erkennen und erstellt dafür direkt eine Text-Dokumentation und auch eine HTML-Dokumentation. Beide Dateien werden im identischen Verzeichnis erstellt. Möchte man aber nur für bestimmte Dateien Dokumentationen erstellen, dann sollte man in "souce_liste" die Dateinamen eintragen. Beispiel: 
+</p></div>
+<div class="div_code">	source_liste&nbsp;=&nbsp;["1_testdatei.py",&nbsp;"3_testdatei.py"]
+</div><div class="div_comment"><p>Mit den beiden Variablen "name_doku_file" und "name_html_file" können die Dokumentationsdateien benannt werden. Die HTML-Datei sollte man nur dann ändern, wenn man z.B. größere Webdokumenationen vor hat, ansonsten ist "index.html" eine gute Wahl. Beispiel: 
+</p></div>
+<div class="div_code">	name_doku_file&nbsp;=&nbsp;path_source&nbsp;+&nbsp;"Dokumenations_1.txt"
+</div><div class="div_code">	name_html_file&nbsp;=&nbsp;path_source&nbsp;+&nbsp;"index.html"
+</div><div class="div_comment"><p>Das war es eigentlich schon..:-) 
+</p></div>
+<div class="div_thema" id="2.1.3 #"><H3>2.1.3 Die main.py Datei</H3></div>
+<div class="div_comment"><p>In der Datei "main.py" können im unteren Bereich in der Funktion "def main():" weitere Dinge eingestellt werden: 
+</p></div>
+<div class="div_code">	def&nbsp;main():
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;vorlagen_restaurieren()
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;len(source_liste)&nbsp;==&nbsp;0:
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list_files&nbsp;=&nbsp;files_read(path_source)
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;files_write_navi(list_files)
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;else:
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list_files&nbsp;=&nbsp;source_liste
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;files_write_navi(list_files)
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;dicttionary&nbsp;=&nbsp;source_read(path_source,&nbsp;list_files)
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;writing_docu(dicttionary,&nbsp;name_doku_file,&nbsp;name_html_file)
+</div><div class="div_comment"><p>In der Funktion "writing_docu()" können folgende Argumente eingestellt werden, die möglichen Werte sind jeweils "True" oder "False": 
+</p></div>
+<div class="div_code">	txt_docu=True&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Das&nbsp;ist&nbsp;auch&nbsp;der&nbsp;Standardwert
+</div><div class="div_code">	html_docu=True&nbsp;&nbsp;&nbsp;#&nbsp;Das&nbsp;ist&nbsp;auch&nbsp;der&nbsp;Standardwert
+</div><div class="div_code">	docx_docu=False&nbsp;&nbsp;#&nbsp;Noch&nbsp;nicht&nbsp;umgesetzt!
+</div><div class="div_code">	pdf_docu=False&nbsp;&nbsp;&nbsp;#&nbsp;Noch&nbsp;nicht&nbsp;umgesetzt!
+</div><div class="div_comment"><p>Eine Einstellung wäre z.B., wenn man zwar HTML aber keine TXT-Dokumentation haben möchte: 
+</p></div>
+<div class="div_code">	writing_docu(dicttionary,&nbsp;name_doku_file,&nbsp;name_html_file,&nbsp;txt_docu=False)
+</div><div class="div_comment"><p>Wenn man keine HTML-Dokumentation haben möchte. aber eine TXT-Dokumentation: 
+</p></div>
+<div class="div_code">	writing_docu(dicttionary,&nbsp;name_doku_file,&nbsp;name_html_file,&nbsp;html_docu=False)
+</div><div class="div_thema" id="2.1.4 #"><H3>2.1.4 Imports</H3></div>
+<div class="div_comment"><p>Es gibt folgende Imports in der "functions.py"-Datei: 
+</p></div>
+<div class="div_code">	import&nbsp;fnmatch
+</div><div class="div_code">	import&nbsp;os,&nbsp;shutil
+</div><div class="div_code">	import&nbsp;re
+</div><div class="div_code">	from&nbsp;os.path&nbsp;import&nbsp;exists&nbsp;as&nbsp;file_exists
+</div><div class="div_thema" id="2.1.5 #"><H3>2.1.5 Reihenfolge der Dateien</H3></div>
+<div class="div_comment"><p>Die Reihenfolge der Dateien spielt natürlich eine Rolle für Dokumentationen. Man möchte bei vielen einzelnen Python-Dateien in einem Verzeichnis die wichtigste Datei sicherlich am Anfang stehen haben etc. Hierfür gibt es keine "Patentlösung", da die Dateinamen im Normalfall ja nicht aufsteigend nach A-Z benannt werden. Es gibt zwei Möglichkeiten, um die Reihenfolge zu steuern. Die erste einfache Variante ist: Die Dateinamen vornummerieren, z.B. wie auch die Testdaten hier im Verzeichnis "testdateien" --> "1_testdatei.py, 2_testdatei.py, 3_testdatei.py". Man könnte z.B. alle Dateien in ein eigenes Verzeichnis legen und durchnummerieren. Die zweite Variante ist die Steuerung über die Variable "source_liste". Dazu wurde am Anfang schon mehr geschrieben. 
+</p></div>
+<div class="div_unterkapitel" id="2.2 #"><H2>2.2  Source(n) einlesen</H2></div>
+<div class="div_thema" id="2.2.1 #"><H3>2.2.1 HTML-Datei(en)</H3></div>
+<div class="div_comment"><p>In der HTML-Datei wird die Nummerierung umgesetzt, wie das in der "functions.py" Datei umgesetzt wurde. Beispiel für Unterkapitel. Hier werden die Zähler bei jedem Vorkommen um eins hochgezählt: 
+</p></div>
+<div class="div_code">	if&nbsp;count_old_unt_kapitel&nbsp;!=&nbsp;count_kapitel:
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;count_unterkapitel&nbsp;=&nbsp;0
+</div><div class="div_code">	count_unterkapitel&nbsp;+=&nbsp;1
+</div><div class="div_comment"><p>Die Nummersetzung erfolgt dann hier: 
+</p></div>
+<div class="div_code">	dict_print["xxx"&nbsp;+&nbsp;"_"&nbsp;+&nbsp;str(count_zeile)]&nbsp;=&nbsp;[str(count_kapitel)&nbsp;+&nbsp;"."
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;str(count_unterkapitel)&nbsp;+&nbsp;"&nbsp;"&nbsp;+&nbsp;line]
+</div><div class="div_comment"><p>Der Zähler ist nur für die Kapitel, Unterkapitel und fürs Thema vorgesehen. Natürlich muss bei jedem neuen Kapitel der Unterkapitelzähler wieder bei 1 beginnen, ebenso bei jedem neuen Unterkapitel muss der Thema-Zähler auch wieder bei 1 starten. Die Source-Datei(en) werden in Funktion "source_read()" eingelesen. Für jede gefundene Source-Datei wird einmal der komplette Inhalt in ein Dictionary eingelesen.: 
+</p></div>
+<div class="div_code">	for&nbsp;onefile&nbsp;in&nbsp;list_files:
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Pro&nbsp;Datei&nbsp;komplettes&nbsp;auslesen&nbsp;und&nbsp;schreiben&nbsp;der&nbsp;Zeilen&nbsp;ins&nbsp;Dictionary:
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;open(path&nbsp;+&nbsp;onefile,&nbsp;"r",&nbsp;encoding="utf-8")&nbsp;as&nbsp;file:
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;line&nbsp;in&nbsp;file.readlines():
+</div><div class="div_comment"><p>Z.B. der Bereich für die Unterkapitel. Hier wird pro Source-Zeile erkannt, ob am Anfang der Bereich für Unterkapitel zu finden ist, wenn ja, wird die Nummerierung angeworfen und dann in "dict_print" in Dictionary geschrieben: 
+</p></div>
+<div class="div_code">	elif&nbsp;line.startswith("xxx"):
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;count_old_unt_kapitel&nbsp;!=&nbsp;count_kapitel:
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count_unterkapitel&nbsp;=&nbsp;0
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;count_unterkapitel&nbsp;+=&nbsp;1
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;dict_print["xxx"&nbsp;+&nbsp;"_"&nbsp;+&nbsp;str(count_zeile)]&nbsp;=&nbsp;[str(count_kapitel)&nbsp;+&nbsp;"."
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;str(count_unterkapitel)&nbsp;+&nbsp;"&nbsp;"&nbsp;+&nbsp;line]
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;count_old_unt_kapitel&nbsp;=&nbsp;count_kapitel
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;count_zeile&nbsp;+=&nbsp;1
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;count_comment&nbsp;+=&nbsp;1
+</div><div class="div_unterkapitel" id="2.3 #"><H2>2.3  Dokumente erzeugen</H2></div>
+<div class="div_thema" id="2.3.1 #"><H3>2.3.1 Funktion writing_docu() - HTML</H3></div>
+<div class="div_comment"><p>In der Funktion "writing_docu()" werden die eigentlich Dokumentationen geschrieben, nachdem alle Source-Dateien eingelesen und in das Dictionary geschrieben wurden. Beispiel Unterkapitel: 
+</p></div>
+<div class="div_code">	elif&nbsp;re.search("^[0-9].*#&nbsp;@Unterkapitel.*",&nbsp;value):
+</div><div class="div_code">	k&nbsp;=&nbsp;re.search("(.*)#&nbsp;@Unterkapitel.*:&nbsp;(.*)",&nbsp;value)
+</div><div class="div_code">	if&nbsp;html_docu:
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;open("./tmp_dateien/body_fragment.txt",&nbsp;"a",&nbsp;encoding="utf-8")&nbsp;as&nbsp;writer:
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writer.write('&lt;div&nbsp;class="div_unterkapitel"'&nbsp;+&nbsp;"&nbsp;"&nbsp;+&nbsp;'id="'&nbsp;+&nbsp;k.group(1)&nbsp;+&nbsp;'#"'&nbsp;+&nbsp;'&gt;'
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;'&lt;H2&gt;'&nbsp;+&nbsp;k.group(1)&nbsp;+&nbsp;"&nbsp;"&nbsp;+&nbsp;k.group(2)&nbsp;+
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&lt;/H2&gt;'&nbsp;+&nbsp;'&lt;/div&gt;'&nbsp;+&nbsp;"\n")
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;open("./tmp_dateien/nav_fragment.txt",&nbsp;"a",&nbsp;encoding="utf-8")&nbsp;as&nbsp;nav_file:
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nav_file.write('&lt;li&gt;&lt;a&nbsp;href='&nbsp;+&nbsp;'"#'&nbsp;+&nbsp;k.group(1)&nbsp;+&nbsp;'#'&nbsp;+&nbsp;'"&gt;'&nbsp;+
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k.group(1)&nbsp;+&nbsp;k.group(2)&nbsp;+&nbsp;'&lt;/a&gt;&lt;/li&gt;')
+</div><div class="div_comment"><p>Das sieht zuerst "wüst" aus, ist es auch vermutlich ..:-), aber so kann ich schlicht den Code besser lesen. Den "with open()" Bereich werde ich später vermutlich zu einer Funktion umbauen. Aber erst irgendwann viel später. Das erste "with open()" beschreibt die tmp-Datei "body_fragment.txt" mit den nötigen HTML-Codes. Die "body_fragment.txt"-Datei später für die eigentliche Erstellung der "index.html" Datei benötigt. Das zweite "with open()" beschreibt den linken Navi-Bereich. 
+</p></div>
+<div class="div_thema" id="2.3.2 #"><H3>2.3.2 Funktion writing_docu() - TXT Datei</H3></div>
+<div class="div_comment"><p>Die TXT-Datei wird komplett in diesem Bereich geschrieben: 
+</p></div>
+<div class="div_code">	if&nbsp;txt_docu:
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;open(ziel1,&nbsp;"a",&nbsp;encoding="utf-8")&nbsp;as&nbsp;writer:
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value&nbsp;=&nbsp;replacer(value)
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writer.write(value)
+</div><div class="div_thema" id="2.3.3 #"><H3>2.3.3 Mehrfache Ausführungen möglich</H3></div>
+<div class="div_comment"><p>Die erstellten Dateien (index.html, test_doku.txt) werden bei jedem Start des Programms vorab immer gelöscht. Man kann das Programm also beliebig oft ausführen. 
+</p></div>
+<div class="div_unterkapitel" id="2.4 #"><H2>2.4  Abschluss</H2></div>
+<div class="div_thema" id="2.4.1 #"><H3>2.4.1 Zusammenfassung</H3></div>
+<div class="div_comment"><p>Weitere Hinweise zu den benötigten Versionen: Programmiert mit Python: 3.9.x 
+</p></div>
+<p></p><p></p><p></p>
+<div class="div_kapitel" id="3. #"><H1>3. PyFiDoc Ver. 1.0 - Python Files to Dokumentation</H1></div>
+<div class="div_author">Author: A_#_M
+</div>
+<div class="div_copyright">© CC BY-NC-SA
+</div>
+<div class="div_comment"><p>Online gibt es weiterführende Informationen zu dem Thema Lizenz: 
+</p></div>
+<div class="div_doku"><a href=https://de.creativecommons.net/was-ist-cc/ target="_blank">https://de.creativecommons.net/was-ist-cc/</a></div>
+<div class="div_unterkapitel" id="3.1 #"><H2>3.1  Mögliche Syntax in Code-Dateien</H2></div>
+<div class="div_thema" id="3.1.1 #"><H3>3.1.1 Grundlagen Syntax</H3></div>
+<div class="div_comment"><p>Die wichtigste Basis-Syntax: Jede nicht-Code-Zeile muss mit einem # beginnen. Danach dann ein Leerzeichen und: "@Name: " (Leerzeichen nach : ist erforderlich). Folgende Möglichkeiten gibt es: "@Kapitel: ", "@Unterkapitel: ", "@Thema: ", "@Author: ", "@Copyright: ", "@Doku-HTML: ", und natürlich "@Comment: ". Die eigentlichen Codezeilen haben keine Kennung am Anfang einer Zeile, d.h. jede Zeile im Code ohne die obigen Kennungen werden als Code-Zeile interpretiert. Die Namen stehen für genau das: Kapitel für Kapitel, Unterkapitel für Unterkapitel etc. Alle "@Doku-HTML: " erwarten http(s)-Links und werden entsprechend gelinkt im Dokument. 
+</p></div>
+<div class="div_thema" id="3.1.2 #"><H3>3.1.2 Einstellmöglichkeiten</H3></div>
+<div class="div_comment"><p>Mit den folgenden Variablen kann die Dokumentationserstellung gesteuert werden: 
+</p></div>
+<div class="div_code">	path_source&nbsp;=&nbsp;"../test_files/"
+</div><div class="div_code">	source_liste&nbsp;=&nbsp;[]
+</div><div class="div_code">	name_doku_file&nbsp;=&nbsp;path_source&nbsp;+&nbsp;"test_doku.txt"
+</div><div class="div_code">	name_html_file&nbsp;=&nbsp;path_source&nbsp;+&nbsp;"index.html"
+</div><div class="div_comment"><p>"path_source": Hier den Pfad zu der/den Sourcedatei(en) eingeben. Das Programm kann alle Python Dateien (mit Endung .py) im Pfad erkennen und erstellt dafür direkt eine Text-Dokumentation und auch eine HTML-Dokumentation. Beide Dateien werden im identischen Verzeichnis erstellt. Möchte man aber nur für bestimmte Dateien Dokumentationen erstellen, dann sollte man in "souce_liste" die Dateinamen eintragen. Beispiel: 
+</p></div>
+<div class="div_code">	source_liste&nbsp;=&nbsp;["1_testdatei.py",&nbsp;"3_testdatei.py"]
+</div><div class="div_comment"><p>Mit den beiden Variablen "name_doku_file" und "name_html_file" können die Dokumentationsdateien benannt werden. Die HTML-Datei sollte man nur dann ändern, wenn man z.B. größere Webdokumenationen vor hat, ansonsten ist "index.html" eine gute Wahl. Beispiel: 
+</p></div>
+<div class="div_code">	name_doku_file&nbsp;=&nbsp;path_source&nbsp;+&nbsp;"Dokumenations_1.txt"
+</div><div class="div_code">	name_html_file&nbsp;=&nbsp;path_source&nbsp;+&nbsp;"index.html"
+</div><div class="div_comment"><p>Das war es eigentlich schon..:-) 
+</p></div>
+<div class="div_thema" id="3.1.3 #"><H3>3.1.3 Die main.py Datei</H3></div>
+<div class="div_comment"><p>In der Datei "main.py" können im unteren Bereich in der Funktion "def main():" weitere Dinge eingestellt werden: 
+</p></div>
+<div class="div_code">	def&nbsp;main():
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;vorlagen_restaurieren()
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;len(source_liste)&nbsp;==&nbsp;0:
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list_files&nbsp;=&nbsp;files_read(path_source)
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;files_write_navi(list_files)
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;else:
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list_files&nbsp;=&nbsp;source_liste
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;files_write_navi(list_files)
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;dicttionary&nbsp;=&nbsp;source_read(path_source,&nbsp;list_files)
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;writing_docu(dicttionary,&nbsp;name_doku_file,&nbsp;name_html_file)
+</div><div class="div_comment"><p>In der Funktion "writing_docu()" können folgende Argumente eingestellt werden, die möglichen Werte sind jeweils "True" oder "False": 
+</p></div>
+<div class="div_code">	txt_docu=True&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Das&nbsp;ist&nbsp;auch&nbsp;der&nbsp;Standardwert
+</div><div class="div_code">	html_docu=True&nbsp;&nbsp;&nbsp;#&nbsp;Das&nbsp;ist&nbsp;auch&nbsp;der&nbsp;Standardwert
+</div><div class="div_code">	docx_docu=False&nbsp;&nbsp;#&nbsp;Noch&nbsp;nicht&nbsp;umgesetzt!
+</div><div class="div_code">	pdf_docu=False&nbsp;&nbsp;&nbsp;#&nbsp;Noch&nbsp;nicht&nbsp;umgesetzt!
+</div><div class="div_comment"><p>Eine Einstellung wäre z.B., wenn man zwar HTML aber keine TXT-Dokumentation haben möchte: 
+</p></div>
+<div class="div_code">	writing_docu(dicttionary,&nbsp;name_doku_file,&nbsp;name_html_file,&nbsp;txt_docu=False)
+</div><div class="div_comment"><p>Wenn man keine HTML-Dokumentation haben möchte. aber eine TXT-Dokumentation: 
+</p></div>
+<div class="div_code">	writing_docu(dicttionary,&nbsp;name_doku_file,&nbsp;name_html_file,&nbsp;html_docu=False)
+</div><div class="div_thema" id="3.1.4 #"><H3>3.1.4 Imports</H3></div>
+<div class="div_comment"><p>Es gibt folgende Imports in der "functions.py"-Datei: 
+</p></div>
+<div class="div_code">	import&nbsp;fnmatch
+</div><div class="div_code">	import&nbsp;os,&nbsp;shutil
+</div><div class="div_code">	import&nbsp;re
+</div><div class="div_code">	from&nbsp;os.path&nbsp;import&nbsp;exists&nbsp;as&nbsp;file_exists
+</div><div class="div_thema" id="3.1.5 #"><H3>3.1.5 Reihenfolge der Dateien</H3></div>
+<div class="div_comment"><p>Die Reihenfolge der Dateien spielt natürlich eine Rolle für Dokumentationen. Man möchte bei vielen einzelnen Python-Dateien in einem Verzeichnis die wichtigste Datei sicherlich am Anfang stehen haben etc. Hierfür gibt es keine "Patentlösung", da die Dateinamen im Normalfall ja nicht aufsteigend nach A-Z benannt werden. Es gibt zwei Möglichkeiten, um die Reihenfolge zu steuern. Die erste einfache Variante ist: Die Dateinamen vornummerieren, z.B. wie auch die Testdaten hier im Verzeichnis "testdateien" --> "1_testdatei.py, 2_testdatei.py, 3_testdatei.py". Man könnte z.B. alle Dateien in ein eigenes Verzeichnis legen und durchnummerieren. Die zweite Variante ist die Steuerung über die Variable "source_liste". Dazu wurde am Anfang schon mehr geschrieben. 
+</p></div>
+<div class="div_unterkapitel" id="3.2 #"><H2>3.2  Source(n) einlesen</H2></div>
+<div class="div_thema" id="3.2.1 #"><H3>3.2.1 HTML-Datei(en)</H3></div>
+<div class="div_comment"><p>In der HTML-Datei wird die Nummerierung umgesetzt, wie das in der "functions.py" Datei umgesetzt wurde. Beispiel für Unterkapitel. Hier werden die Zähler bei jedem Vorkommen um eins hochgezählt: 
+</p></div>
+<div class="div_code">	if&nbsp;count_old_unt_kapitel&nbsp;!=&nbsp;count_kapitel:
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;count_unterkapitel&nbsp;=&nbsp;0
+</div><div class="div_code">	count_unterkapitel&nbsp;+=&nbsp;1
+</div><div class="div_comment"><p>Die Nummersetzung erfolgt dann hier: 
+</p></div>
+<div class="div_code">	dict_print["xxx"&nbsp;+&nbsp;"_"&nbsp;+&nbsp;str(count_zeile)]&nbsp;=&nbsp;[str(count_kapitel)&nbsp;+&nbsp;"."
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;str(count_unterkapitel)&nbsp;+&nbsp;"&nbsp;"&nbsp;+&nbsp;line]
+</div><div class="div_comment"><p>Der Zähler ist nur für die Kapitel, Unterkapitel und fürs Thema vorgesehen. Natürlich muss bei jedem neuen Kapitel der Unterkapitelzähler wieder bei 1 beginnen, ebenso bei jedem neuen Unterkapitel muss der Thema-Zähler auch wieder bei 1 starten. Die Source-Datei(en) werden in Funktion "source_read()" eingelesen. Für jede gefundene Source-Datei wird einmal der komplette Inhalt in ein Dictionary eingelesen.: 
+</p></div>
+<div class="div_code">	for&nbsp;onefile&nbsp;in&nbsp;list_files:
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Pro&nbsp;Datei&nbsp;komplettes&nbsp;auslesen&nbsp;und&nbsp;schreiben&nbsp;der&nbsp;Zeilen&nbsp;ins&nbsp;Dictionary:
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;open(path&nbsp;+&nbsp;onefile,&nbsp;"r",&nbsp;encoding="utf-8")&nbsp;as&nbsp;file:
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;line&nbsp;in&nbsp;file.readlines():
+</div><div class="div_comment"><p>Z.B. der Bereich für die Unterkapitel. Hier wird pro Source-Zeile erkannt, ob am Anfang der Bereich für Unterkapitel zu finden ist, wenn ja, wird die Nummerierung angeworfen und dann in "dict_print" in Dictionary geschrieben: 
+</p></div>
+<div class="div_code">	elif&nbsp;line.startswith("xxx"):
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;count_old_unt_kapitel&nbsp;!=&nbsp;count_kapitel:
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count_unterkapitel&nbsp;=&nbsp;0
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;count_unterkapitel&nbsp;+=&nbsp;1
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;dict_print["xxx"&nbsp;+&nbsp;"_"&nbsp;+&nbsp;str(count_zeile)]&nbsp;=&nbsp;[str(count_kapitel)&nbsp;+&nbsp;"."
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;str(count_unterkapitel)&nbsp;+&nbsp;"&nbsp;"&nbsp;+&nbsp;line]
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;count_old_unt_kapitel&nbsp;=&nbsp;count_kapitel
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;count_zeile&nbsp;+=&nbsp;1
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;count_comment&nbsp;+=&nbsp;1
+</div><div class="div_unterkapitel" id="3.3 #"><H2>3.3  Dokumente erzeugen</H2></div>
+<div class="div_thema" id="3.3.1 #"><H3>3.3.1 Funktion writing_docu() - HTML</H3></div>
+<div class="div_comment"><p>In der Funktion "writing_docu()" werden die eigentlich Dokumentationen geschrieben, nachdem alle Source-Dateien eingelesen und in das Dictionary geschrieben wurden. Beispiel Unterkapitel: 
+</p></div>
+<div class="div_code">	elif&nbsp;re.search("^[0-9].*#&nbsp;@Unterkapitel.*",&nbsp;value):
+</div><div class="div_code">	k&nbsp;=&nbsp;re.search("(.*)#&nbsp;@Unterkapitel.*:&nbsp;(.*)",&nbsp;value)
+</div><div class="div_code">	if&nbsp;html_docu:
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;open("./tmp_dateien/body_fragment.txt",&nbsp;"a",&nbsp;encoding="utf-8")&nbsp;as&nbsp;writer:
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writer.write('&lt;div&nbsp;class="div_unterkapitel"'&nbsp;+&nbsp;"&nbsp;"&nbsp;+&nbsp;'id="'&nbsp;+&nbsp;k.group(1)&nbsp;+&nbsp;'#"'&nbsp;+&nbsp;'&gt;'
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;'&lt;H2&gt;'&nbsp;+&nbsp;k.group(1)&nbsp;+&nbsp;"&nbsp;"&nbsp;+&nbsp;k.group(2)&nbsp;+
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&lt;/H2&gt;'&nbsp;+&nbsp;'&lt;/div&gt;'&nbsp;+&nbsp;"\n")
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;open("./tmp_dateien/nav_fragment.txt",&nbsp;"a",&nbsp;encoding="utf-8")&nbsp;as&nbsp;nav_file:
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nav_file.write('&lt;li&gt;&lt;a&nbsp;href='&nbsp;+&nbsp;'"#'&nbsp;+&nbsp;k.group(1)&nbsp;+&nbsp;'#'&nbsp;+&nbsp;'"&gt;'&nbsp;+
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k.group(1)&nbsp;+&nbsp;k.group(2)&nbsp;+&nbsp;'&lt;/a&gt;&lt;/li&gt;')
+</div><div class="div_comment"><p>Das sieht zuerst "wüst" aus, ist es auch vermutlich ..:-), aber so kann ich schlicht den Code besser lesen. Den "with open()" Bereich werde ich später vermutlich zu einer Funktion umbauen. Aber erst irgendwann viel später. Das erste "with open()" beschreibt die tmp-Datei "body_fragment.txt" mit den nötigen HTML-Codes. Die "body_fragment.txt"-Datei später für die eigentliche Erstellung der "index.html" Datei benötigt. Das zweite "with open()" beschreibt den linken Navi-Bereich. 
+</p></div>
+<div class="div_thema" id="3.3.2 #"><H3>3.3.2 Funktion writing_docu() - TXT Datei</H3></div>
+<div class="div_comment"><p>Die TXT-Datei wird komplett in diesem Bereich geschrieben: 
+</p></div>
+<div class="div_code">	if&nbsp;txt_docu:
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;open(ziel1,&nbsp;"a",&nbsp;encoding="utf-8")&nbsp;as&nbsp;writer:
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value&nbsp;=&nbsp;replacer(value)
+</div><div class="div_code">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writer.write(value)
+</div><div class="div_thema" id="3.3.3 #"><H3>3.3.3 Mehrfache Ausführungen möglich</H3></div>
+<div class="div_comment"><p>Die erstellten Dateien (index.html, test_doku.txt) werden bei jedem Start des Programms vorab immer gelöscht. Man kann das Programm also beliebig oft ausführen. 
+</p></div>
+<div class="div_unterkapitel" id="3.4 #"><H2>3.4  Abschluss</H2></div>
+<div class="div_thema" id="3.4.1 #"><H3>3.4.1 Zusammenfassung</H3></div>
+<div class="div_comment"><p>Weitere Hinweise zu den benötigten Versionen: Programmiert mit Python: 3.9.x 
+</p></div>
+<p></p><p></p><p></p>

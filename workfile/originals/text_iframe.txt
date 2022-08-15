@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="de">
+
+    <head>
+		<title>Text_Datei anzeigen</title>
+		<meta media="print" rel="stylesheet" type="text/css" />
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<style type="text/css">
+			#textframe {
+			font-size: 2em;
+			font-weight: bold;
+			padding: 3px;
+			color: black;
+			font-family: DigitalSerial;
+			}
+</style>
+    </head>
+    <body>
+		<div style="text-align: center;">
+		<iframe id="textframe" style="float: middle; color: #0093b7; width: 95%; height: 750px;"
+                scrolling="yes"

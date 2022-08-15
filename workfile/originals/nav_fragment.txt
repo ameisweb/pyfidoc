@@ -1,3 +1,5 @@
 <body>
 <ul>
+  <li><a class="active" href="#home">::PyFiDoc Download::</a></li>
+  <li><a class="active" href="#home">::Python-Dateien::</a></li>
   <li><a class="active" href="#home">::Python-Dateien::</a></li>
