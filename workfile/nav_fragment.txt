@@ -1,7 +1,7 @@
 <body>
 <ul>
   <li><a class="active" href="#home">::PyFiDoc Download::</a></li>
-  <li><a class="active" href="#home">::Python-Dateien::</a></li>
+  <li><a href="download/pyfidoc.zip" target="_blank">PyFiDoc - Zip</a></li>
   <li><a class="active" href="#home">::Python-Dateien::</a></li>
 <li><a href="py_texte/1_Testdatei 1.html" target="_blank">1_Testdatei 1.py</a></li>
 <li><a href="py_texte/2_Testdatei 2.html" target="_blank">2_Testdatei 2.py</a></li>
