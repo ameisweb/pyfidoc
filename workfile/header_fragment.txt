@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>CSS Website Layout</title>
+<meta media="print" rel="stylesheet" type="text/css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  margin: 0;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  padding-left: 0px;
+  width: 20%;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+li a {
+  display: block;
+  color: #000;
+  padding: 2px 15px;
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+}
+
+li a.active {
+  background-color: #66CCFF;
+  color: white;
+  padding-left: 25%;
+  font-family: Arial, sans-serif;
+}
+
+li a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+.div_kapitel {
+  background-color: #0093b7;
+  color: white;
+  max-width: 85%;
+  height: auto;
+  border: 1px solid green;
+  padding: 2px;
+  padding-left: 15px;
+  margin: 0px;
+  font-family: Verdana, sans-serif;
+}
+.div_unterkapitel {
+  // background-color: lightgrey;
+  max-width: 85%;
+  border: 0px solid green;
+  padding: 0px;
+  margin: 0px;
+  font-family: Verdana, sans-serif;
+}
+.div_thema {
+  // background-color: lightgrey;
+  max-width: 85%;
+  border: 0px solid green;
+  padding: 0px;
+  margin: 0px;
+  font-family: Verdana, sans-serif;
+}
+.div_comment {
+  // background-color: lightgrey;
+  max-width: 85%;
+  border: 0px solid green;
+  padding: 0px;
+  margin: 0px;
+  font-family: Verdana, sans-serif;
+}
+.div_code {
+  background-color: WhiteSmoke;
+  max-width: 100%;
+  border: 0px solid green;
+  padding: 2px;
+  padding-left: 20px;
+  margin: 0px;
+  font-family: "Courier New", monospace;
+}
+.div_doku {
+  // background-color: lightgrey;
+  max-width: 85%;
+  border: 0px solid green;
+  padding: 0px;
+  margin: 0px;
+  font-family: Verdana, sans-serif;
+}
+.div_author {
+  // background-color: lightgrey;
+  max-width: 85%;
+  border: 0px solid green;
+  padding: 0px;
+  margin: 0px;
+  font-family: "Courier New", monospace;
+}
+.div_copyright {
+  // background-color: lightgrey;
+  max-width: 85%;
+  border: 0px solid green;
+  padding: 0px;
+  margin: 0px;
+  font-family: "Courier New", monospace;
+}
+</style>
+</head>
