@@ -3,8 +3,8 @@
 # @Copyright: CC BY-NC-SA
 # @Comment: Das Programm kann auch bei Github downgeloadet werden:
 # @Doku-HTML: https://github.com/ameisweb/pyfidoc
-# @Comment: Online gibt es weiterführende Informationen zu dem Thema Lizenz:
-# @Doku-HTML: https://de.creativecommons.net/was-ist-cc/
+# @Comment: Hier können die Lizenzbedingungen eingesehen werden:
+# @Doku-HTML: http://pyfidoc.de/py_texte/license.html
 
 # @Unterkapitel: Mögliche Syntax in Code-Dateien
 # @Thema: Grundlagen Syntax
