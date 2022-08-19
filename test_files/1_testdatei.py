@@ -6,7 +6,16 @@
 # @Comment: Hier können die Lizenzbedingungen eingesehen werden:
 # @Doku-HTML: http://pyfidoc.de/py_texte/license.html
 
-# @Unterkapitel: Mögliche Syntax in Code-Dateien
+# @Unterkapitel: Testdateien-Beispiel
+# @Thema: Beispiel-Projekt mit Testdateien
+# @Comment: Dieser Bereich ist ein Beispiel. Die Testdateien befinden sich im Verzeichnis test_files,
+# @Comment: wer das Programm ausprobieren möchte, sollte sich die drei Testdateien "1_testdatei.py",
+# @Comment: "2_testdatei.py" und "3_testdatei.py" in ein passendes Verzeichnis legen, in der main.py
+# @Comment: das Testverzeichnis in "path_source" eintragen und dann das PyFiDoc laufenlassen. Dort findet
+# @Comment: man dann das Verzeichnis "pyfidocs", hierhin werden die Dokumentationen geschrieben.
+# @Comment: Diese Testdateien beinhalten alle bisherigen Umsetzungen von PyFiDoc und können somit als
+# @Comment: Vorlage für eigene Dokumentationen in .py-Dateien dienen.
+
 # @Thema: Grundlagen Syntax
 # @Comment: Die wichtigste Basis-Syntax: Jede nicht-Code-Zeile muss mit einem # beginnen. Danach dann ein
 # @Comment: Leerzeichen und: "@[Name]: " (Leerzeichen nach : ist erforderlich). Folgende Möglichkeiten

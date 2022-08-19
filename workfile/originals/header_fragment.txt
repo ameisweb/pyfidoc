@@ -84,7 +84,6 @@ li a:hover:not(.active) {
   padding: 2px;
   padding-left: 20px;
   margin: 0px;
-  font-family: "Courier New", monospace;
 }
 .div_doku {
   // background-color: lightgrey;
