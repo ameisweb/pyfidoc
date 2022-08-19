@@ -47,7 +47,7 @@ def files_write_navi(file_list, path_source):
 # @Thema: IFrame-HTML pro Filename schreiben
 # @Comment: Hier wird die jeweilige iFrame-HTML-Seite pro Filenamen geschrieben. Klickt man auf der HTML
 # @Comment: auf einen Filenamen unterhalb von "::Python-Dateien::", dann wird man auf die hier erstellten
-# @Comment: iFrame-Seiten gelinkt. Den iFrame-Aufbau pro Python-Datei habe ich gewählt, weil man so
+# @Comment: iFrame-Seiten gelinkt. Den iFrame - Aufbau pro Python - Datei habe ich gewählt, weil man so
 # @Comment: mit einfachen Mitteln txt.Dateien quasi im Original in den Browser lesen kann. Die Python
 # @Comment: Files mit .py am Ende werden in der Funktion "copy_in_txt" in "py_texte" als .txt-Dateien kopiert.
 # @Comment: Dadurch kann man die Python-files auch im Browser aufrufen. Würde man die .py-Dateien aufrufen,
