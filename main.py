@@ -135,12 +135,6 @@ def main():
 if __name__ == "__main__":
     main()
 
-# @Thema: End-angabe
-# @Comment: Am Ende jeder Datei setze ich noch ein "# @End:" ein. In der HTML-Seite sieht man dann
-# @Comment: jeweils die Zeichenkette: "###End-Datei###". Das dient dazu, dass man mehrere .py-Dateien
-# @Comment: die z.B. nicht jeweils mit Kapitel etc. beginnen, auf der HTML-Seite unterscheiden kann.
-# @End:
-
 # @Thema: Nachtrag
 # @Comment: In dieser Dokumentation sind zusätzlich noch die Testdateien in die HTML-Seite aufgenommen
 # @Comment: worden. Diese sind im linken Navigationsbereich unter "::Testdateien::" zu finden. Das vorliegende
@@ -148,5 +142,12 @@ if __name__ == "__main__":
 # @Comment: nicht mehr aktiv. Die Testdateien liegen zwar im Verzeichnis, in der Datei "nav_fragment.txt" ist
 # @Comment: diese Erweiterung auskommentiert. Die Testdateien dienen nur zum testen, falls Jemand PyFiDoc
 # @Comment: mal ausprobieren möchte.
+
+# @Thema: End-angabe
+# @Comment: Am Ende jeder Datei setze ich noch ein "# @End:" ein. In der HTML-Seite sieht man dann
+# @Comment: jeweils die Zeichenkette: "###End-Datei###". Das dient dazu, dass man mehrere .py-Dateien
+# @Comment: die z.B. nicht jeweils mit Kapitel etc. beginnen, auf der HTML-Seite unterscheiden kann.
+# @End:
+
 
 
