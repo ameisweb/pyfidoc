@@ -2,7 +2,9 @@
 # PyFiDoc Version 1.0
 #
 1.1 Wofür ist das Programm
+---
 1.1.1 Ausgangslage
+---
 
 Jetzt gerade erlerne ich die Python-Programmierung. Noch kenne ich längst nicht alle Themen. Meine Arbeitsweise ist 
 wie folgt: Wenn ich Themen erarbeite, dann übe ich diese Themen auch gleich in Python-Dateien. Wenn man dann so 
