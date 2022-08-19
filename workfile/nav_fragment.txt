@@ -7,4 +7,48 @@
 <li><a href="py_texte/2_Testdatei.html" target="_blank">2_Testdatei.py</a></li>
 <li><a href="py_texte/3_Testdatei.html" target="_blank">3_Testdatei.py</a></li>
 <li><a class="active" href="#home">::Dokument_Index::</a></li>
-<li><a style="background-color:#D3D3D3" href="#1. #">1. PyFiDoc Ver. 1.0 - Python Files to Dokumentation</a></li><li><a href="#1.1 #">1.1 Mögliche Syntax in Code-Dateien</a></li><li><a href="#1.1.1 #">1.1.1 Grundlagen Syntax</a></li><li><a href="#1.1.2 #">1.1.2 Einstellmöglichkeiten</a></li><li><a href="#1.1.3 #">1.1.3 Die main.py Datei</a></li><li><a href="#1.1.4 #">1.1.4 Imports</a></li><li><a href="#1.1.5 #">1.1.5 Reihenfolge der Dateien</a></li><li><a href="#1.2 #">1.2 Source(n) einlesen</a></li><li><a href="#1.2.1 #">1.2.1 HTML-Datei(en)</a></li><li><a href="#1.3 #">1.3 Dokumente erzeugen</a></li><li><a href="#1.3.1 #">1.3.1 Funktion writing_docu() - HTML</a></li><li><a href="#1.3.2 #">1.3.2 Funktion writing_docu() - TXT Datei</a></li><li><a href="#1.3.3 #">1.3.3 Mehrfache Ausführungen möglich</a></li><li><a href="#1.4 #">1.4 Abschluss</a></li><li><a href="#1.4.1 #">1.4.1 Zusammenfassung</a></li><li><a style="background-color:#D3D3D3" href="#2. #">2. PyFiDoc Ver. 1.0 - Python Files to Dokumentation</a></li><li><a href="#2.1 #">2.1 Mögliche Syntax in Code-Dateien</a></li><li><a href="#2.1.1 #">2.1.1 Grundlagen Syntax</a></li><li><a href="#2.1.2 #">2.1.2 Einstellmöglichkeiten</a></li><li><a href="#2.1.3 #">2.1.3 Die main.py Datei</a></li><li><a href="#2.1.4 #">2.1.4 Imports</a></li><li><a href="#2.1.5 #">2.1.5 Reihenfolge der Dateien</a></li><li><a href="#2.2 #">2.2 Source(n) einlesen</a></li><li><a href="#2.2.1 #">2.2.1 HTML-Datei(en)</a></li><li><a href="#2.3 #">2.3 Dokumente erzeugen</a></li><li><a href="#2.3.1 #">2.3.1 Funktion writing_docu() - HTML</a></li><li><a href="#2.3.2 #">2.3.2 Funktion writing_docu() - TXT Datei</a></li><li><a href="#2.3.3 #">2.3.3 Mehrfache Ausführungen möglich</a></li><li><a href="#2.4 #">2.4 Abschluss</a></li><li><a href="#2.4.1 #">2.4.1 Zusammenfassung</a></li><li><a style="background-color:#D3D3D3" href="#3. #">3. PyFiDoc Ver. 1.0 - Python Files to Dokumentation</a></li><li><a href="#3.1 #">3.1 Mögliche Syntax in Code-Dateien</a></li><li><a href="#3.1.1 #">3.1.1 Grundlagen Syntax</a></li><li><a href="#3.1.2 #">3.1.2 Einstellmöglichkeiten</a></li><li><a href="#3.1.3 #">3.1.3 Die main.py Datei</a></li><li><a href="#3.1.4 #">3.1.4 Imports</a></li><li><a href="#3.1.5 #">3.1.5 Reihenfolge der Dateien</a></li><li><a href="#3.2 #">3.2 Source(n) einlesen</a></li><li><a href="#3.2.1 #">3.2.1 HTML-Datei(en)</a></li><li><a href="#3.3 #">3.3 Dokumente erzeugen</a></li><li><a href="#3.3.1 #">3.3.1 Funktion writing_docu() - HTML</a></li><li><a href="#3.3.2 #">3.3.2 Funktion writing_docu() - TXT Datei</a></li><li><a href="#3.3.3 #">3.3.3 Mehrfache Ausführungen möglich</a></li><li><a href="#3.4 #">3.4 Abschluss</a></li><li><a href="#3.4.1 #">3.4.1 Zusammenfassung</a></li>
+<li><a style="background-color:#D3D3D3" href="#1. #">1. PyFiDoc Ver. 1.0 - Python Files to Dokumentation</a></li>
+<li><a href="#1.1 #">1.1 Mögliche Syntax in Code-Dateien</a></li>
+<li><a href="#1.1.1 #">1.1.1 Grundlagen Syntax</a></li>
+<li><a href="#1.1.2 #">1.1.2 Einstellmöglichkeiten</a></li>
+<li><a href="#1.1.3 #">1.1.3 Die main.py Datei</a></li>
+<li><a href="#1.1.4 #">1.1.4 Imports</a></li>
+<li><a href="#1.1.5 #">1.1.5 Reihenfolge der Dateien</a></li>
+<li><a href="#1.2 #">1.2 Source(n) einlesen</a></li>
+<li><a href="#1.2.1 #">1.2.1 HTML-Datei(en)</a></li>
+<li><a href="#1.3 #">1.3 Dokumente erzeugen</a></li>
+<li><a href="#1.3.1 #">1.3.1 Funktion writing_docu() - HTML</a></li>
+<li><a href="#1.3.2 #">1.3.2 Funktion writing_docu() - TXT Datei</a></li>
+<li><a href="#1.3.3 #">1.3.3 Mehrfache Ausführungen möglich</a></li>
+<li><a href="#1.4 #">1.4 Abschluss</a></li>
+<li><a href="#1.4.1 #">1.4.1 Zusammenfassung</a></li>
+<li><a style="background-color:#D3D3D3" href="#2. #">2. PyFiDoc Ver. 1.0 - Python Files to Dokumentation</a></li>
+<li><a href="#2.1 #">2.1 Mögliche Syntax in Code-Dateien</a></li>
+<li><a href="#2.1.1 #">2.1.1 Grundlagen Syntax</a></li>
+<li><a href="#2.1.2 #">2.1.2 Einstellmöglichkeiten</a></li>
+<li><a href="#2.1.3 #">2.1.3 Die main.py Datei</a></li>
+<li><a href="#2.1.4 #">2.1.4 Imports</a></li>
+<li><a href="#2.1.5 #">2.1.5 Reihenfolge der Dateien</a></li>
+<li><a href="#2.2 #">2.2 Source(n) einlesen</a></li>
+<li><a href="#2.2.1 #">2.2.1 HTML-Datei(en)</a></li>
+<li><a href="#2.3 #">2.3 Dokumente erzeugen</a></li>
+<li><a href="#2.3.1 #">2.3.1 Funktion writing_docu() - HTML</a></li>
+<li><a href="#2.3.2 #">2.3.2 Funktion writing_docu() - TXT Datei</a></li>
+<li><a href="#2.3.3 #">2.3.3 Mehrfache Ausführungen möglich</a></li>
+<li><a href="#2.4 #">2.4 Abschluss</a></li>
+<li><a href="#2.4.1 #">2.4.1 Zusammenfassung</a></li>
+<li><a style="background-color:#D3D3D3" href="#3. #">3. PyFiDoc Ver. 1.0 - Python Files to Dokumentation</a></li>
+<li><a href="#3.1 #">3.1 Mögliche Syntax in Code-Dateien</a></li>
+<li><a href="#3.1.1 #">3.1.1 Grundlagen Syntax</a></li>
+<li><a href="#3.1.2 #">3.1.2 Einstellmöglichkeiten</a></li>
+<li><a href="#3.1.3 #">3.1.3 Die main.py Datei</a></li>
+<li><a href="#3.1.4 #">3.1.4 Imports</a></li>
+<li><a href="#3.1.5 #">3.1.5 Reihenfolge der Dateien</a></li>
+<li><a href="#3.2 #">3.2 Source(n) einlesen</a></li>
+<li><a href="#3.2.1 #">3.2.1 HTML-Datei(en)</a></li>
+<li><a href="#3.3 #">3.3 Dokumente erzeugen</a></li>
+<li><a href="#3.3.1 #">3.3.1 Funktion writing_docu() - HTML</a></li>
+<li><a href="#3.3.2 #">3.3.2 Funktion writing_docu() - TXT Datei</a></li>
+<li><a href="#3.3.3 #">3.3.3 Mehrfache Ausführungen möglich</a></li>
+<li><a href="#3.4 #">3.4 Abschluss</a></li>
+<li><a href="#3.4.1 #">3.4.1 Zusammenfassung</a></li>

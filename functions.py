@@ -20,7 +20,6 @@ def files_write_navi(file_list, path_source):
     for file in file_list:
         # Schreibt oben Links Filenamen ins Menu:
         no_extension = file.split(".")
-        # print(no_extension[0])
         with open("./workfile/nav_fragment.txt", "a", encoding="utf-8") as nav_file:
             nav_file.write('<li><a href="' + 'py_texte/' + no_extension[0] + '.html' + '"' + " " +
                            'target="_blank"' + '>' + file + '</a></li>' + "\n")
@@ -189,7 +188,7 @@ def writing_docu(dict_print, ziel1, html_write, txt_docu=True,
 
                         with open("./workfile/nav_fragment.txt", "a", encoding="utf-8") as nav_file:
                             nav_file.write('<li><a style="background-color:#D3D3D3" href=' + '"#'  + k.group(1)
-                                           + '#' + '">' + k.group(1) + k.group(2) + '</a></li>')
+                                           + '#' + '">' + k.group(1) + k.group(2) + '</a></li>'+ "\n")
                     if docx_docu:
                         pass
                     if pdf_docu:
@@ -218,7 +217,7 @@ def writing_docu(dict_print, ziel1, html_write, txt_docu=True,
                                          '</H2>' + '</div>' + "\n")
                         with open("./workfile/nav_fragment.txt", "a", encoding="utf-8") as nav_file:
                             nav_file.write('<li><a href=' + '"#' + k.group(1) + '#' + '">' +
-                                           k.group(1) + k.group(2) + '</a></li>')
+                                           k.group(1) + k.group(2) + '</a></li>'+ "\n")
                     if docx_docu:
                         pass
                     if pdf_docu:
@@ -234,7 +233,7 @@ def writing_docu(dict_print, ziel1, html_write, txt_docu=True,
 
                         with open("./workfile/nav_fragment.txt", "a", encoding="utf-8") as nav_file:
                             nav_file.write('<li><a href=' + '"#' + k.group(1) + '#' + '">' +
-                                           k.group(1) + k.group(2) + '</a></li>')
+                                           k.group(1) + k.group(2) + '</a></li>'+ "\n")
                     if docx_docu:
                         pass
                     if pdf_docu:
