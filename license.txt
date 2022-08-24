@@ -91,7 +91,7 @@ Abschnitt 6 – Laufzeit und Beendigung
     Es sei klargestellt, dass der Lizenzgeber das lizenzierte Material auch unter anderen Bedingungen anbieten oder den Vertrieb des lizenzierten Materials jederzeit einstellen darf; gleichwohl erlischt dadurch die vorliegende Public License nicht.
     Die Abschnitte 1, 5, 6, 7 und 8 gelten auch nach Erlöschen der vorliegenden Public License fort.
 
-Abschnitt 7 – Sonstige Bedingungen b
+Abschnitt 7 – Sonstige Bedingungen
 
     Der Lizenzgeber ist nicht an durch Sie gestellte zusätzliche oder abweichende Bedingungen gebunden, wenn diese nicht ausdrücklich vereinbart wurden.
     Jedwede das lizenzierte Material betreffenden und hier nicht genannten Umstände, Annahmen oder Vereinbarungen sind getrennt und unabhängig von den Bedingungen der vorliegenden Public License.
